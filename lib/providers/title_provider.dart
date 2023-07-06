@@ -21,7 +21,9 @@ class TitleProvider with ChangeNotifier {
 
       List<dynamic> results = body['results'];
       results.forEach((result) {
-        dynamic transformedString = result['genres']['genres'].map((genre) => genre['text'] ?? '').toList().join(', ');
+        dynamic transformedString =
+          result['genres']['genres'].map((genre) => genre['text'] ?? '').toList().join(', ');
+        
         result['genres'] = transformedString;
       });
 

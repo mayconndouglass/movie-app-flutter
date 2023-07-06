@@ -4,6 +4,8 @@ class TitleModel {
   final String genres;
   final int releaseYear;
   final String imageUrl;
+  final String synopsi;
+  final dynamic rating;
 
   TitleModel({
     required this.title,
@@ -11,6 +13,8 @@ class TitleModel {
     required this.genres,
     required this.releaseYear,
     required this.imageUrl,
+    required this.synopsi,
+    required this.rating,
   });
 
   factory TitleModel.fromJson(Map<String, dynamic> json) {
@@ -21,6 +25,8 @@ class TitleModel {
       genres: json['genres'],
       releaseYear: json['releaseYear']['year'],
       imageUrl: json['primaryImage']['url'],
+      synopsi: json['plot']?['plotText']?['plainText'] ?? '',
+      rating: json['ratingsSummary']?['aggregateRating'] ?? '',
     );
   }
 }
