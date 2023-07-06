@@ -3,7 +3,7 @@ import 'package:movie_app/models/title_model.dart';
 
 class MovieCard extends StatelessWidget {
   final TitleModel data;
-
+  
   const MovieCard({Key? key, required this.data}) : super(key: key);
 
   @override
@@ -104,19 +104,20 @@ class MovieCard extends StatelessWidget {
                      const SizedBox(
                       height: 10,
                     ),
-                    const Row(
+                    data.rating != null ?
+                    Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.star,
                           color: Colors.orange,
                           size: 18,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 4,
                         ),
                         Text(
-                          '10.0',
-                          style: TextStyle(
+                          data.rating.toString(),
+                          style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.w400,
                             color: Colors.white
@@ -124,6 +125,7 @@ class MovieCard extends StatelessWidget {
                         ) 
                       ],
                     )
+                    : Container()
                   ],
                 ),
               ),

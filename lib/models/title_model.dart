@@ -26,7 +26,7 @@ class TitleModel {
       releaseYear: json['releaseYear']['year'],
       imageUrl: json['primaryImage']['url'],
       synopsi: json['plot']?['plotText']?['plainText'] ?? '',
-      rating: json['ratingsSummary']?['aggregateRating'] ?? '',
+      rating: json['ratingsSummary']?['aggregateRating'] ?? 'Não Avaliado',
     );
   }
 }
