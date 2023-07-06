@@ -86,7 +86,7 @@ class MovieCard extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      'Gênero: ${data.genre}',
+                      'Gênero: ${data.genres}',
                       style: const TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.w400,

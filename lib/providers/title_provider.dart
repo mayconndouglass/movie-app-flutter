@@ -6,7 +6,6 @@ import 'package:movie_app/models/title_model.dart';
 
 class TitleProvider with ChangeNotifier {
   final _baseUrl = 'https://moviesdatabase.p.rapidapi.com/titles?year=2023&info=base_info';
-  //TODO: Falta pegar o base_info no model
   final List<TitleModel> titleList = [];
 
   Future<void> loadData() async {
@@ -16,14 +15,16 @@ class TitleProvider with ChangeNotifier {
     };
 
     final response = await http.get(Uri.parse(_baseUrl), headers: headers);
-    /* print(response.statusCode);
-    print(response.body);
-    print(response); */
-
 
     if (response.statusCode == 200) {
-      final dynamic body = jsonDecode(response.body);
-      final List<dynamic> results = body['results'];
+      dynamic body = jsonDecode(response.body);
+
+      List<dynamic> results = body['results'];
+      results.forEach((result) {
+        dynamic transformedString = result['genres']['genres'].map((genre) => genre['text'] ?? '').toList().join(', ');
+        result['genres'] = transformedString;
+      });
+
       titleList.clear();
       titleList.addAll(results.map((data) => TitleModel.fromJson(data)));
 
@@ -31,20 +32,5 @@ class TitleProvider with ChangeNotifier {
     } else {
       throw Exception('Ops, Erro no carregamento dos dados');
     }
-
-
-    /* try {
-      final dynamic body = jsonDecode(response.body);
-      final List<dynamic> results = body['results'];
-      print('results ----------------');
-      print(results);
-      
-      titleList.clear();
-      titleList.addAll(results.map((data) => TitleModel.fromJson(data)));
-
-      notifyListeners();
-    } catch (error) {
-      throw Exception('Ops, Erro no carregamento dos dados');
-    } */
   }
 }
