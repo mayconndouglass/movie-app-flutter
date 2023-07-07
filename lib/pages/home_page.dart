@@ -62,11 +62,10 @@ class HomePageState extends State<HomePage> {
               NumberPaginator(
                 numberPages: 20,
                 onPageChange: (page) {
-                  provider.loadData(page: page);
+                  provider.loadData(page: page + 1);
                 },
               )
-            ],
-            
+            ],           
           ),
         );
       },

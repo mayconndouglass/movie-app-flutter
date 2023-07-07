@@ -41,107 +41,96 @@ class DetailsPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              alignment: WrapAlignment.center,
               children: [
                 for (var genre in genres)
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-                          child: Text(
-                            genre,
-                            style: const TextStyle(
-                              color: Colors.white
-                            ),
-                          ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+                      child: Text(
+                        genre,
+                        style: const TextStyle(
+                          color: Colors.white
                         ),
                       ),
-                      const SizedBox(
-                        width: 10,
-                      )
-                    ],
+                    ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),    
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        data.type,
-                        style: const TextStyle(
-                          color: Colors.green,
-                          fontSize: 24
-                        ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      data.type,
+                      style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 24
                       ),
-                      const Text(
-                        'Tipo',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 40,
-                  ),
-                  Column(
-                    children: [
-                      const Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                        size: 24,
+                    ),
+                    const Text(
+                      'Tipo',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20
                       ),
-                      Text(
-                        data.rating.toString(),
-                        style: const TextStyle(
-                           color: Colors.white,
-                           fontSize: 20
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                     width: 40,
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        data.releaseYear.toString(),
-                         style: const TextStyle(
-                          color: Colors.blue,
-                          fontSize: 24
-                        ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  width: 40,
+                ),
+                Column(
+                  children: [
+                    const Icon(
+                      Icons.star,
+                      color: Colors.orange,
+                      size: 24,
+                    ),
+                    Text(
+                      data.rating.toString(),
+                      style: const TextStyle(
+                         color: Colors.white,
+                         fontSize: 20
                       ),
-                      const Text(
-                        'Ano',
-                        style: TextStyle(
-                          color: Colors.white,
-                              fontSize: 20
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              )
+                    )
+                  ],
+                ),
+                const SizedBox(
+                   width: 40,
+                ),
+                Column(
+                  children: [
+                    Text(
+                      data.releaseYear.toString(),
+                       style: const TextStyle(
+                        color: Colors.blue,
+                        fontSize: 24
+                      ),
+                    ),
+                    const Text(
+                      'Ano',
+                      style: TextStyle(
+                        color: Colors.white,
+                            fontSize: 20
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -150,11 +139,10 @@ class DetailsPage extends StatelessWidget {
               children: [
                 const Text(
                   'Descrição:',
-                  style: 
-                    TextStyle(
-                      color: Colors.white,
-                      fontSize: 24
-                    ),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24
+                  ),
                 ),
                 const SizedBox(height: 10,),
                 Text(
