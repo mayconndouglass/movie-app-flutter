@@ -25,7 +25,7 @@ class TitleModel {
       genres: json['genres'],
       releaseYear: json['releaseYear']['year'],
       imageUrl: json['primaryImage']['url'],
-      synopsi: json['plot']?['plotText']?['plainText'] ?? '',
+      synopsi: json['plot']?['plotText']?['plainText'] ?? 'Sem Descrição',
       rating: json['ratingsSummary']?['aggregateRating'] ?? 'Não Avaliado',
     );
   }

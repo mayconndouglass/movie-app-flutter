@@ -24,10 +24,8 @@ class MovieApp extends StatelessWidget {
       routes: {
         AppRoute.details.name: (context) {
           final data = ModalRoute.of(context)?.settings.arguments as TitleModel?;
-          return DetailsPage(
-            data: data!,
-          );
-        }
+          return data != null ? DetailsPage(data: data) : const Scaffold(body: Text('Dados não disponíveis'));
+        },
       },
     );
   }
