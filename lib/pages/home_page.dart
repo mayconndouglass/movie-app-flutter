@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/providers/title_provider.dart';
 import 'package:movie_app/widgets/title_card.dart';
+import 'package:number_paginator/number_paginator.dart';
 import 'package:provider/provider.dart';
 
 
@@ -44,15 +45,28 @@ class HomePageState extends State<HomePage> {
             centerTitle: true,
             backgroundColor: Colors.black87,
           ),
-          body: RefreshIndicator(
-            onRefresh: () => provider.loadData(),
-            child: ListView.builder(
-              itemCount: provider.titleList.length,
-              itemBuilder: (context, index) {
-                final data = provider.titleList[index];
-                return MovieCard(data: data);
-              }
-            ),
+          body: Column(
+            children: [
+              Expanded(
+                child: RefreshIndicator(
+                  onRefresh: () => provider.loadData(),
+                    child: ListView.builder(
+                      itemCount: provider.titleList.length,
+                      itemBuilder: (context, index) {
+                        final data = provider.titleList[index];
+                        return MovieCard(data: data);
+                      }
+                    ),
+                ), 
+              ),
+              NumberPaginator(
+                numberPages: 20,
+                onPageChange: (page) {
+                  provider.loadData(page: page);
+                },
+              )
+            ],
+            
           ),
         );
       },

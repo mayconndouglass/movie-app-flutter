@@ -20,11 +20,11 @@ class TitleModel {
   factory TitleModel.fromJson(Map<String, dynamic> json) {
 
     return TitleModel(
-      title: json['titleText']['text'] ?? '',
-      type: json['titleType']['text'] ?? '',
-      genres: json['genres'],
-      releaseYear: json['releaseYear']['year'],
-      imageUrl: json['primaryImage']['url'],
+      title: json['titleText']?['text'] ?? '',
+      type: json['titleType']?['text'] ?? '',
+      genres: json['genres'] ?? '',
+      releaseYear: json['releaseYear']?['year'] ?? '',
+      imageUrl: json['primaryImage']?['url'] ?? "https://www.sema.rs.gov.br/themes/padrao2019/images/outros/GD_imgSemImagem.png",
       synopsi: json['plot']?['plotText']?['plainText'] ?? 'Sem Descrição',
       rating: json['ratingsSummary']?['aggregateRating'] ?? 'Não Avaliado',
     );

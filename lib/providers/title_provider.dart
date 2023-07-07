@@ -8,13 +8,15 @@ class TitleProvider with ChangeNotifier {
   final _baseUrl = 'https://moviesdatabase.p.rapidapi.com/titles?year=2023&info=base_info';
   final List<TitleModel> titleList = [];
 
-  Future<void> loadData() async {
+  Future<void> loadData({int page = 1}) async {
+    final String url = '$_baseUrl&page=$page';
+
     const headers = {
       'X-RapidAPI-Key': '2c60b4747bmsh8892a80c26977d0p19cd87jsnbffdef5116a0',
       'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
     };
 
-    final response = await http.get(Uri.parse(_baseUrl), headers: headers);
+    final response = await http.get(Uri.parse(url), headers: headers);
 
     if (response.statusCode == 200) {
       dynamic body = jsonDecode(response.body);
@@ -29,7 +31,7 @@ class TitleProvider with ChangeNotifier {
 
       titleList.clear();
       titleList.addAll(results.map((data) => TitleModel.fromJson(data)));
-
+      
       notifyListeners();
     } else {
       throw Exception('Ops, Erro no carregamento dos dados');
