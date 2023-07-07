@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/title_model.dart';
 
+import '../routes/app_route.dart';
+
 class MovieCard extends StatelessWidget {
   final TitleModel data;
   
@@ -47,7 +49,9 @@ class MovieCard extends StatelessWidget {
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoute.details.name, arguments: data);
+                      },
                       child: const SizedBox(
                         height: 300,
                         width: 200,
@@ -110,7 +114,7 @@ class MovieCard extends StatelessWidget {
                         const Icon(
                           Icons.star,
                           color: Colors.orange,
-                          size: 18,
+                          size: 20,
                         ),
                         const SizedBox(
                           width: 4,
