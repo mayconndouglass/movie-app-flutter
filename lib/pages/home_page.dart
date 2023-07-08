@@ -48,6 +48,12 @@ class HomePageState extends State<HomePage> {
                   _openGenreDropdown(provider);
                 },
               ),
+              IconButton(
+                icon: const Icon(Icons.person),
+                onPressed: () {
+                  _showCreatorInfo(context);
+                },
+              ),
             ],
           ),
           body: Column(
@@ -94,7 +100,7 @@ class HomePageState extends State<HomePage> {
               selectedGenre = newValue!;
             });
             provider.loadData(genre: selectedGenre, page: currentPage);
-            Navigator.pop(context);
+            Navigator.pop(context); 
           },
           items: [
             const DropdownMenuItem<String>(
@@ -111,6 +117,15 @@ class HomePageState extends State<HomePage> {
         ),
       );
     },
+  );
+}
+
+void _showCreatorInfo(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('Criado por Maycon Douglas'),
+      duration: Duration(seconds: 7),
+    ),
   );
 }
 
